@@ -14,6 +14,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 def apiOverview(request):
     api_urls = {
         'List': '/car-list/',
+        'Detail': '/car-detail/<int:pk>',
         'Filter by model': '?model=',
         'Filter by price': '?price=',
     }
@@ -28,7 +29,7 @@ class CarList(generics.ListCreateAPIView):
 
 
 class CarDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Car.objects.all
+    queryset = Car.objects.all()
     serializer_class = CarSerializer
 
 
